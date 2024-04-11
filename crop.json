@@ -1,0 +1,44 @@
+{
+    "crops": {
+        "L": {
+            "is-winter-crop": false, 
+            "residueParams": ["include-from-file", "monica-parameters/crop-residues/wheat.json"],
+            "cropParams": {
+                "cultivar": ["include-from-file", "monica-parameters/crops/wheat/spring-wheat.json"],
+                "species": ["include-from-file", "monica-parameters/crops/wheat.json"]
+            }
+        }
+    }, 
+    "cropRotation": [
+        {
+            "worksteps": [
+                { 
+					"type": "AutomaticSowing", 
+					"crop": ["ref", "crops", "L"],
+					"earliest-date": "0000-01-01",
+					"latest-date": "0000-04-15",
+					"min-temp": 7,
+					"days-in-temp-window": 14,
+					"min-%-asw": 15,
+					"max-%-asw": 60,
+					"max-3d-precip-sum": 4,
+					"max-curr-day-precip": 0.1,
+					"temp-sum-above-base-temp": 0,
+					"base-temp": 2.5
+				},
+				{ 
+					"type": "AutomaticHarvest", 
+					"latest-date": "0000-09-05",
+					"min-%-asw": 0,
+					"max-%-asw": 40,
+					"max-3d-precip-sum": 4,
+					"max-curr-day-precip": 0.1,
+					"harvest-time": "maturity"
+				}
+            ]
+        }
+    ], 
+    "CropParameters": {
+        "=": ["include-from-file", "monica-parameters/general/crop.json"]
+    }
+}

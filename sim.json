@@ -1,0 +1,52 @@
+{
+    "climate.csv": "",
+    "site.json": "",
+    "crop.json": "",
+    "climate.csv-options": {
+        "start-date": "1979-01-01",
+        "end-date": "2018-12-31",
+        "csv-separator": ",",
+        "no-of-climate-file-header-lines": 1,
+        "header-to-acd-names": {
+            "DAY": ["pattern-date", "YYYYMMDD"],
+            "PRECIPITATION": "precip",
+            "TEMPERATURE_MAX": "tmax",
+            "TEMPERATURE_MIN": "tmin",
+            "TEMPERATURE_AVG": "tavg",
+            "RADIATION": ["globrad", "/", 1000.0],
+            "WINDSPEED": "wind"
+        }
+    }, 
+    "debug?": false,
+    "output": {
+        "write-file?": true,
+        "path-to-output": "",
+        "file-name": "sim-large.csv",
+        "obj-outputs?": true,
+        "csv-options": {
+            "include-header-row": true, 
+            "include-units-row": true, 
+            "csv-separator": ","
+        }, 
+        "events": [
+            ["while", "Stage", "=", 4], [
+                ["Year|year_stage_4", "FIRST"],
+				["DOY|doy_stage_4", "FIRST"]
+			],
+            ["while", "Stage", "=", 6], [
+                ["Year|year_stage_6", "FIRST"],
+				["DOY|doy_stage_6", "FIRST"]
+			]
+        ]
+    }, 
+    "include-file-base-path": "data/",
+    "NitrogenResponseOn": true,
+    "EmergenceMoistureControlOn": true,
+    "WaterDeficitResponseOn": true,
+    "EmergenceFloodingControlOn": true,
+    "NumberOfLayers": 20,
+    "LayerThickness": [0.1, "m"],
+    "UseSecondaryYields": true,
+    "UseAutomaticIrrigation": false,
+    "UseNMinMineralFertilisingMethod": false
+}
